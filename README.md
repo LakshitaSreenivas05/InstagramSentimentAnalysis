@@ -1,106 +1,56 @@
-**Text Detection and Text-Length Prediction from Images**
+#Instagram Comment Sentiment Analysis using LSTM#
 
-This project focuses on detecting and extracting text from images and predicting the length of the extracted text using machine learning algorithms. The workflow involves synthetic dataset generation, OCR-based text extraction, feature extraction, and classification.
+This project aims to build a machine learning model that classifies Instagram comments into different sentiment categories: Positive, Neutral, and Negative. This project uses various NLP and deep learning techniques to process and analyze text data, helping understand user sentiment expressed in social media comments.
 
 **Project Overview**
 
-The project aims to automatically detect and extract text from images and predict the length of the text. This is achieved through a pipeline that includes:
-
-* Synthetic dataset generation using Faker and Pillow
-
-* Text extraction using OCR (Tesseract)
-
-* Feature extraction from text and images
-
-* Application of multiple machine learning models for text-length prediction
-
-This workflow can be extended to applications such as automated document analysis, CAPTCHA reading, and text-based image indexing.
+The project focuses on analyzing Instagram comments to determine the sentiment expressed by users. It uses a combination of traditional machine learning models and deep learning approaches to handle sequential text data. The workflow includes data collection, preprocessing, feature extraction, model training, evaluation, and sentiment prediction.
 
 **Key Features**
 
-* Synthetic text-image dataset creation with varied fonts, sizes, and backgrounds
+* Cleaning and preprocessing of Instagram comments
 
-* OCR-based text detection and extraction
+* Tokenization and padding for sequence modeling
 
-* Feature engineering for text and image attributes
+* Traditional machine learning models (Naive Bayes, Logistic Regression) using TF-IDF features
 
-* Multiple machine learning models for classification and regression of text length
+* Deep learning model (LSTM) capturing sequential dependencies in text
 
-* Evaluation and prediction on new unseen images
+* Sentiment prediction for new, unseen Instagram comments
 
-**Dataset Generation**
+**Data Collection & Preprocessing**
 
-* **Faker Library**: Generates synthetic text data.
+* **Data Cleaning**: Comments are lowercased, mentions, hashtags, and URLs removed, and stopwords discarded.
 
-* **Pillow**: Creates images with different backgrounds, fonts, and sizes.
+* **Tokenization**: Converts words into numerical representations suitable for model input.
 
-* **Dataset Structure**:
+* **Padding**: Ensures uniform sequence length for compatibility with deep learning models.
 
-\_  dataset/
-images/
-img\_001.png
-img\_002.png
-labels.csv\_
+**Modeling**
 
-labels.csv contains the ground-truth text for each image.
+* **Naive Bayes**: Probabilistic classifier for text-based sentiment classification.
 
-**Variations Included**:
+* **Logistic Regression**: Linear model predicting probabilities of sentiment classes.
 
-* Different font styles and sizes
+* **LSTM (Long Short-Term Memory)**: Deep learning model capturing sequential context and dependencies in comments.
 
-* Varied background colors and patterns
+**Evaluation**
 
-* Randomized text content
+* Models are evaluated using accuracy and classification reports.
 
-**Text Detection and Extraction**
+* The LSTM model provides better handling of sequential dependencies in text compared to traditional models.
 
-* **OCR Tool Used**: Tesseract OCR
+**Sentiment Prediction**
 
-* **Process**:
+* A function is implemented to predict the sentiment of new Instagram comments based on the trained models.
 
-  * Load image
+**Algorithms Used**
 
-  * Apply preprocessing (grayscale, thresholding)
+* **Naive Bayes**: Probabilistic model for text classification.
 
-  * Detect and extract text using Tesseract
+* **Logistic Regression**: Linear model predicting probabilities of sentiment classes.
 
-  * Store extracted text for feature engineering
-
-**Feature Extraction**
-
-The following features are extracted from the text and image:
-
-* Length of the extracted text
-
-* Font characteristics (size, style)
-
-* Image quality metrics (resolution, noise)
-
-These features are then used as inputs for the classification algorithms.
-
-**Classification Algorithms**
-
-The project implements several models for predicting text length:
-
-* **Naive Bayes**: Probabilistic classifier using Bayes’ theorem to predict text-length categories
-
-* **Linear Regression**: Predicts numerical text length from extracted features
-
-* **Logistic Regression**: Classifies text length into discrete categories such as short, medium, or long
-
-* **ID3 Decision Tree**: Predicts text length based on decision rules from features
-
-* **Find S & Candidate Algorithms**: Generate hypothesis spaces and select the best candidate model
-
-**Prediction**
-
-After training, models predict text length for new unseen images.
-
-The output includes:
-
-* Predicted text length
-
-* Text length category (short/medium/long)
+* **LSTM**: Deep learning model capturing context and dependencies in text sequences.
 
 **Installation**
 
@@ -108,45 +58,39 @@ Clone the repository and install the required dependencies:
 
 ```bash
 git clone <repository-url>
-cd text-detection-length-prediction
+cd instagram-sentiment-analysis
 pip install -r requirements.txt
 ```
 
 **Usage**
 
-* **Generate Dataset**:
+* **Preprocess Data**:
 
 ```bash
-python dataset_generator.py
+python preprocess_data.py
 ```
 
-* **Extract Text from Images**:
+* **Train Traditional Models**:
 
 ```bash
-python text_extraction.py
+python train_ml_models.py
 ```
 
-* **Train Models**:
+* **Train LSTM Model**:
 
 ```bash
-python train_models.py
+python train_lstm.py
 ```
 
-* **Predict Text Length**:
+* **Predict Sentiment for New Comments**:
 
 ```bash
-python predict_text_length.py --image_path "dataset/images/img_001.png"
+python predict_sentiment.py --comment "Your comment text here"
 ```
 
 **Dependencies**
 
 * Python 3.x
-
-* pillow
-
-* faker
-
-* pytesseract
 
 * numpy
 
@@ -154,23 +98,27 @@ python predict_text_length.py --image_path "dataset/images/img_001.png"
 
 * scikit-learn
 
+* tensorflow / keras
+
+* nltk / spaCy
+
 **Results**
 
-* Performance metrics (accuracy, mean absolute error) for each model
+* Accuracy and classification reports for each model
 
-* Confusion matrix for classification models
+* Comparison of traditional ML models vs. LSTM performance
 
-* Sample predictions on new images
+* Sample predictions on new Instagram comments
 
 **Future Work**
 
-* Integrate deep learning models for improved text detection
+* Expand dataset with real Instagram comments for better generalization
 
-* Handle handwritten text using specialized OCR
+* Implement multilingual support for comments in different languages
 
-* Expand dataset with real-world images for better generalization
+* Integrate attention mechanisms to improve LSTM performance
 
-* Add multilingual text support
+* Explore transformer-based models like BERT for sentiment analysis
 
 **License**
 
