@@ -1,4 +1,4 @@
-#Instagram Comment Sentiment Analysis using LSTM
+# Instagram Comment Sentiment Analysis using LSTM
 
 This project aims to build a machine learning model that classifies Instagram comments into different sentiment categories: Positive, Neutral, and Negative. This project uses various NLP and deep learning techniques to process and analyze text data, helping understand user sentiment expressed in social media comments.
 
